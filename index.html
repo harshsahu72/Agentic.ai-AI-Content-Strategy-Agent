@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic.ai — AI Content Strategy Agent</title>
+    <meta name="description" content="AI-powered content strategy agent with memory-driven insights, viral prediction, and audience persona analysis.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ambient Background -->
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="bg-grid"></div>
+
+    <div class="app-shell">
+
+        <!-- ═══ SIDEBAR ═══ -->
+        <aside class="sidebar">
+            <div class="sidebar-inner">
+
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="ph-fill ph-brain"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-name">Agentic<span class="logo-dot">.ai</span></span>
+                        <span class="logo-tagline">Content Intelligence</span>
+                    </div>
+                </div>
+
+                <!-- Memory Stats -->
+                <div class="memory-header">
+                    <span class="section-label"><i class="ph ph-database"></i> Memory Bank</span>
+                    <div class="memory-badge" id="memory-count">0</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-ring">
+                        <svg viewBox="0 0 36 36">
+                            <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(99,102,241,0.15)" stroke-width="2.5"/>
+                            <circle cx="18" cy="18" r="15.9" fill="none" stroke="url(#grad)" stroke-width="2.5"
+                                stroke-dasharray="60 40" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+                            <defs>
+                                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#6366f1"/>
+                                    <stop offset="100%" stop-color="#ec4899"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span class="stat-ring-value" id="memory-count-ring">0</span>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-main">Memory Records</div>
+                        <div class="stat-sub">Hindsight Engine Active</div>
+                    </div>
+                </div>
+
+                <button id="add-memory-btn" class="btn-add-memory">
+                    <i class="ph ph-plus-circle"></i>
+                    <span>Log New Memory</span>
+                </button>
+
+                <!-- Memory List -->
+                <div class="memory-scroll-area">
+                    <div class="memory-list" id="memory-list"></div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- ═══ MAIN CONTENT ═══ -->
+        <main class="main">
+
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div class="status-pill">
+                        <span class="status-dot"></span>
+                        Agent Online
+                    </div>
+                    <h1 class="topbar-title">Workspace</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn-icon" id="settings-btn">
+                        <i class="ph ph-sliders"></i>
+                        <span>API Config</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Capability Cards -->
+            <section class="section">
+                <p class="section-label"><i class="ph ph-lightning"></i> Capabilities</p>
+                <div class="action-grid">
+
+                    <div class="action-card ac-indigo" data-action="7-day">
+                        <div class="ac-number">01</div>
+                        <div class="ac-left">
+                            <div class="ac-icon"><i class="ph ph-calendar-dots"></i></div>
+                        </div>
+                        <div class="ac-content">
+                            <h3>7-Day Content Plan</h3>
+                            <p>Generate a full week of content anchored to your highest-performing memory patterns.</p>
+                        </div>
+                        <div class="ac-meta">
+                            <span class="ac-tag">Strategy</span>
+                            <i class="ph ph-arrow-right ac-arr"></i>
+                        </div>
+                    </div>
+
+                    <div class="action-card ac-violet" data-action="dna">
+                        <div class="ac-number">02</div>
+                        <div class="ac-left">
+                            <div class="ac-icon"><i class="ph ph-dna"></i></div>
+                        </div>
+                        <div class="ac-content">
+                            <h3>Content DNA</h3>
+                            <p>Analyse your unique tone, formats, and top content vectors from memory data.</p>
+                        </div>
+                        <div class="ac-meta">
+                            <span class="ac-tag">Analytics</span>
+                            <i class="ph ph-arrow-right ac-arr"></i>
+                        </div>
+                    </div>
+
+                    <div class="action-card ac-red" data-action="stop">
+                        <div class="ac-number">03</div>
+                        <div class="ac-left">
+                            <div class="ac-icon"><i class="ph ph-prohibit"></i></div>
+                        </div>
+                        <div class="ac-content">
+                            <h3>What To Stop</h3>
+                            <p>Identify and eliminate low-performing concepts based on real engagement data.</p>
+                        </div>
+                        <div class="ac-meta">
+                            <span class="ac-tag">Audit</span>
+                            <i class="ph ph-arrow-right ac-arr"></i>
+                        </div>
+                    </div>
+
+                    <div class="action-card ac-teal" data-action="persona">
+                        <div class="ac-number">04</div>
+                        <div class="ac-left">
+                            <div class="ac-icon"><i class="ph ph-users-three"></i></div>
+                        </div>
+                        <div class="ac-content">
+                            <h3>Audience Persona</h3>
+                            <p>Infer skill levels and behavioral preferences from your engagement signals.</p>
+                        </div>
+                        <div class="ac-meta">
+                            <span class="ac-tag">Insights</span>
+                            <i class="ph ph-arrow-right ac-arr"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Input Tools -->
+            <section class="section">
+                <p class="section-label"><i class="ph ph-test-tube"></i> Analysis Tools</p>
+                <div class="tools-grid">
+
+                    <div class="tool-card tool-violet">
+                        <div class="tool-badge">AI Scoring</div>
+                        <div class="tool-top">
+                            <div class="tool-icon-lg"><i class="ph ph-rocket-launch"></i></div>
+                            <div>
+                                <h3>Viral Predictor</h3>
+                                <p>Score your idea 0–100 against memory patterns</p>
+                            </div>
+                        </div>
+                        <div class="tool-input-wrap">
+                            <input type="text" id="viral-input" placeholder="Describe your content idea…" autocomplete="off">
+                            <button class="btn-run btn-run-violet" data-action="predict">
+                                <i class="ph ph-sparkle"></i> Predict
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="tool-card tool-pink">
+                        <div class="tool-badge tool-badge-pink">Brutal Mode</div>
+                        <div class="tool-top">
+                            <div class="tool-icon-lg tool-icon-pink"><i class="ph ph-fire"></i></div>
+                            <div>
+                                <h3>Roast Mode</h3>
+                                <p>Merciless critique of your draft post</p>
+                            </div>
+                        </div>
+                        <div class="tool-input-wrap">
+                            <input type="text" id="roast-input" placeholder="Paste your post draft here…" autocomplete="off">
+                            <button class="btn-run btn-run-pink" data-action="roast">
+                                <i class="ph ph-flame"></i> Roast It
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Output Panel -->
+            <section class="section output-section" id="output-panel">
+                <div class="output-topbar">
+                    <div class="output-label">
+                        <i class="ph ph-terminal-window"></i>
+                        <span>Strategic Output</span>
+                    </div>
+                    <div class="loading-pill" id="loading" style="display:none;">
+                        <div class="loading-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span>Processing…</span>
+                    </div>
+                </div>
+                <div class="output-content" id="output-content">
+                    <div class="output-placeholder">
+                        <i class="ph ph-sparkle"></i>
+                        <p>Select a capability above to engage the agent.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ═══ SETTINGS MODAL ═══ -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <i class="ph ph-sliders"></i>
+                    <h2>API Configuration</h2>
+                </div>
+                <button class="modal-close close-modal"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Google Gemini API Key <span class="label-optional">optional — demo works without it</span></label>
+                    <div class="input-icon-wrap">
+                        <i class="ph ph-key"></i>
+                        <input type="password" id="api-key-input" placeholder="AIzaSy…">
+                    </div>
+                    <p class="form-hint">Stored only in your browser's localStorage. Never sent anywhere except Google's API.</p>
+                </div>
+                <button class="btn-primary w-full" id="save-settings">
+                    <i class="ph ph-floppy-disk"></i> Save Configuration
+                </button>
+                <div class="modal-divider">or</div>
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" class="btn-ghost w-full">
+                    <i class="ph ph-arrow-square-out"></i> Get a free API key at AI Studio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ ADD MEMORY MODAL ═══ -->
+    <div class="modal-overlay" id="memory-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <i class="ph ph-database"></i>
+                    <h2>Log Hindsight Memory</h2>
+                </div>
+                <button class="modal-close close-modal"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Post Topic / Context</label>
+                    <textarea id="memory-content" rows="3" placeholder="e.g. A post comparing Vite vs Webpack for build times…"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Media Format</label>
+                        <select id="memory-format">
+                            <option>Text / Tweet</option>
+                            <option>Carousel / Slides</option>
+                            <option>Reel / Short Video</option>
+                            <option>Longform / Blog</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Engagement / Views</label>
+                        <input type="number" id="memory-engagement" placeholder="e.g. 5000">
+                    </div>
+                </div>
+                <button class="btn-primary w-full" id="save-memory">
+                    <i class="ph ph-floppy-disk"></i> Save to Memory Bank
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
